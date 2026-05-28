@@ -118,9 +118,31 @@ nav.nav-solid {
   width: 24px; height: 2px;
   background: white;
   border-radius: 2px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
 }
+/* Animate hamburger to X when active */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 @media (max-width: 1024px) {
+  .nav-inner {
+    padding: 0 20px;
+  }
+  .nav-logo {
+    font-size: 20px;
+    white-space: nowrap;
+    gap: 8px;
+  }
+  .nav-logo-img {
+    height: 32px;
+  }
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .nav-links.open {
@@ -129,11 +151,13 @@ nav.nav-solid {
     position: absolute;
     top: 80px;
     left: 0; right: 0;
-    background: rgba(10,10,18,0.95);
+    background: rgba(13, 27, 46, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     padding: 16px 24px 24px;
     gap: 4px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
   }
 }
 
@@ -145,6 +169,7 @@ nav.nav-solid {
   overflow: hidden;
   display: flex;
   align-items: flex-end;
+  background: var(--navy);
 }
 .hero-court-img {
   position: absolute;
@@ -179,7 +204,7 @@ nav.nav-solid {
 }
 
 .hero-title {
-  font-size: clamp(52px, 7vw, 96px);
+  font-size: clamp(40px, 7vw, 96px);
   color: white;
   line-height: 0.92;
   text-transform: uppercase;

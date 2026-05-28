@@ -15,6 +15,7 @@
   --white: #ffffff;
   --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-secondary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-accent: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* ─── RESET ─── */
@@ -29,26 +30,33 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: var(--font-secondary);
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 
 
 /* ─── NAV ─── */
 nav {
-  background: transparent;
+  background: rgba(13, 27, 46, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 /* Override for inner pages that have no hero video */
 nav.nav-solid {
-  background: var(--navy);
+  background: rgba(13, 27, 46, 0.75) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: sticky;
   box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .nav-inner {
   max-width: 1280px;
@@ -69,6 +77,7 @@ nav.nav-solid {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
 }
 .nav-logo-img {
   height: 42px;
@@ -206,13 +215,18 @@ nav.nav-solid {
 .hero-title {
   font-size: clamp(40px, 7vw, 96px);
   color: white;
-  line-height: 0.92;
+  line-height: 0.9;
   text-transform: uppercase;
   margin-bottom: 20px;
+  letter-spacing: -0.04em;
 }
 .hero-title em {
   color: var(--primary);
   font-style: italic;
+  font-family: var(--font-accent);
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 .hero-subtitle {
   color: rgba(255,255,255,0.7);
@@ -281,11 +295,11 @@ nav.nav-solid {
 .section-label {
   font-family: var(--font-secondary);
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: 13px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--primary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: block;
 }
 .section-title {
@@ -342,11 +356,11 @@ nav.nav-solid {
 .program-tag {
   font-family: var(--font-secondary);
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--primary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: block;
 }
 .program-name {
@@ -354,7 +368,9 @@ nav.nav-solid {
   color: var(--navy);
   text-transform: uppercase;
   margin-bottom: 12px;
-  line-height: 1.05;
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.02em;
 }
 .program-desc {
   color: #666;
@@ -468,10 +484,18 @@ nav.nav-solid {
   font-size: clamp(44px, 6vw, 80px);
   color: white;
   text-transform: uppercase;
-  line-height: 0.92;
+  line-height: 0.9;
   margin-bottom: 20px;
+  letter-spacing: -0.03em;
 }
-.cta-inner h2 span { color: var(--primary); }
+.cta-inner h2 span {
+  color: var(--primary);
+  font-family: var(--font-accent);
+  font-style: italic;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0;
+}
 .cta-inner p {
   color: rgba(255,255,255,0.65);
   font-size: 17px;

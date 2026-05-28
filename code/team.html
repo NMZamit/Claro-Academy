@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team — Claro Tennis Academy</title>
+  <meta name="description" content="Meet the editing and development team behind Claro Tennis Academy.">
+  <link rel="icon" type="image/png" href="../assets/logo1.png">
+
+
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ─── PAGE HERO BANNER ─── */
+    .team-hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 140px 24px 80px;
+      text-align: center;
+    }
+    .team-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(183,7,17,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 50%, rgba(183,7,17,0.08) 0%, transparent 55%);
+    }
+    .team-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .team-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .team-hero-label {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .team-hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      color: white;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .team-hero h1 em {
+      color: var(--primary);
+      font-style: italic;
+    }
+    .team-hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 17px;
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ─── TEAM SECTION ─── */
+    .team-section {
+      background: #f4f6f8;
+      padding: 96px 24px;
+    }
+    .team-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+    @media (max-width: 720px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── MEMBER CARD ─── */
+    .member-card {
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .member-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .member-card-top {
+      background: var(--navy);
+      padding: 48px 36px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .member-card-top::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(183,7,17,0.08);
+    }
+    .member-card-top::after {
+      content: '';
+      position: absolute;
+      bottom: -20px; left: -20px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .member-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(183,7,17,0.15);
+      border: 2px solid rgba(183,7,17,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .member-avatar svg {
+      width: 36px;
+      height: 36px;
+      color: var(--primary);
+      opacity: 0.85;
+    }
+    .member-role-badge {
+      display: inline-block;
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(183,7,17,0.12);
+      border: 1px solid rgba(183,7,17,0.25);
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .member-name {
+      font-size: clamp(26px, 3vw, 36px);
+      color: white;
+      text-transform: uppercase;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── MEMBER BODY ─── */
+    .member-body {
+      padding: 32px 36px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+    .member-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    .member-bio {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .member-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .member-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #444;
+      font-size: 14px;
+      font-family: var(--font-primary);
+      transition: color 0.2s;
+      padding: 8px 12px;
+      border-radius: 4px;
+      background: #f8fafc;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .member-contact-item:hover {
+      color: var(--primary);
+      border-color: rgba(183,7,17,0.2);
+      background: rgba(183,7,17,0.03);
+    }
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg {
+      width: 15px;
+      height: 15px;
+      color: white;
+    }
+    .contact-label {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .contact-label span:first-child {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+    }
+    .contact-label span:last-child {
+      font-size: 14px;
+      color: inherit;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .team-hero-inner > * {
+      animation: fadeInUp 0.7s ease both;
+    }
+    .team-hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+    .team-hero-inner > *:nth-child(2) { animation-delay: 0.18s; }
+    .team-hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+    .member-card:nth-child(1) { animation: fadeInUp 0.6s 0.15s ease both; }
+    .member-card:nth-child(2) { animation: fadeInUp 0.6s 0.3s  ease both; }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav-solid">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="../assets/logo1.png" alt="Claro Tennis Academy Logo" class="nav-logo-img">
+      Claro Tennis <span>Academy</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#programs">Adult Camps</a>
+      <a href="index.html#programs">Junior Camps</a>
+      <a href="index.html#about">About Us</a>
+      <a href="pricing.html" class="nav-book">Book Now</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO BANNER ─── -->
+<section class="team-hero">
+  <div class="team-hero-inner">
+    <span class="team-hero-label">Behind the scenes</span>
+    <h1>Our Editing &amp;<br><em>Developing Team</em></h1>
+    <p>Meet the creative minds who bring Claro Tennis Academy to life — from frame to code.</p>
+  </div>
+</section>
+
+<!-- ─── TEAM CARDS ─── -->
+<section class="team-section">
+  <div class="team-grid">
+
+    <!-- Video Editor -->
+    <div class="member-card">
+      <div class="member-card-top">
+        <div class="member-avatar">
+          <!-- Camera / film icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.89L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+          </svg>
+        </div>
+        <div class="member-role-badge">Video Editor</div>
+        <h2 class="member-name">Yuvraj<br>Sharma</h2>
+      </div>
+      <div class="member-body">
+        <div class="member-divider"></div>
+        <p class="member-bio">
+          Responsible for all video production, editing, and visual storytelling at Claro Tennis Academy. Crafting compelling content that captures the energy and spirit of the game.
+        </p>
+        <div class="member-contact">
+          <a href="mailto:yuvrajsharma14232006@gmail.com" class="member-contact-item" id="editor-email">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-label">
+              <span>Email</span>
+              <span>yuvrajsharma14232006@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/oyenanku/" target="_blank" rel="noopener" class="member-contact-item" id="editor-instagram">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </div>
+            <div class="contact-label">
+              <span>Instagram</span>
+              <span>@oyenanku</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Developer -->
+    <div class="member-card">
+      <div class="member-card-top">
+        <div class="member-avatar">
+          <!-- Code icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <div class="member-role-badge">Web Developer</div>
+        <h2 class="member-name">Amitooj<br>Singh</h2>
+      </div>
+      <div class="member-body">
+        <div class="member-divider"></div>
+        <p class="member-bio">
+          Designed and built the Claro Tennis Academy website from the ground up — ensuring a fast, elegant, and responsive experience for players and families across every device.
+        </p>
+        <div class="member-contact">
+          <a href="mailto:amitoojxsandhu@gmail.com" class="member-contact-item" id="developer-email">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-label">
+              <span>Email</span>
+              <span>amitoojxsandhu@gmail.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Claro Tennis <span>Academy</span></div>
+        <p>World-class tennis training, elite coaching, and an immersive academy experience for players of all levels and ages.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="index.html#programs">Adult Camps</a></li>
+          <li><a href="index.html#programs">Junior Programs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Academy</h5>
+        <ul>
+          <li><a href="#">Our History</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="team.html">Our Editing &amp; Developing Team</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Claro Tennis Academy. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Legal Notice</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="main.js"></script>
+
+</body>
+</html>

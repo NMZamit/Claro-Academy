@@ -151,7 +151,7 @@ nav.nav-solid {
     position: absolute;
     top: 80px;
     left: 0; right: 0;
-    background: rgba(13, 27, 46, 0.8);
+    background: rgba(10, 10, 10, 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     padding: 16px 24px 24px;

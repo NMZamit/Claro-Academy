@@ -313,8 +313,7 @@
       Claro Tennis <span>Academy</span>
     </a>
     <div class="nav-links">
-      <a href="index.html#programs">Adult Camps</a>
-      <a href="index.html#programs">Junior Camps</a>
+      <a href="index.html#programs">Programs</a>
       <a href="index.html#about">About Us</a>
       <a href="pricing.html" class="nav-book">Book Now</a>
     </div>
@@ -356,29 +355,6 @@
           </li>
         </ul>
       </div>
-
-      <!-- Media Preview Block (Plays local webm) -->
-      <div class="video-preview-card mt-auto">
-        <video id="preview-video" autoplay loop muted playsinline>
-          <source src="../assets/output.webm" type="video/webm">
-          Your browser does not support the video tag.
-        </video>
-        <div class="video-pill">
-          <span>Claro Academy Live</span>
-        </div>
-        <button id="mute-btn" class="video-mute-btn" type="button" aria-label="Toggle Mute">
-          <!-- Sound Muted Icon (Default) -->
-          <svg id="mute-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-          </svg>
-          <!-- Sound Unmuted Icon (Hidden by default) -->
-          <svg id="unmute-icon" class="hidden" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-          </svg>
-        </button>
-        <div class="video-bottom-caption">Experience court action first-hand</div>
-      </div>
     </div>
 
     <!-- Right Column: Interactive Booking Form -->
@@ -386,7 +362,7 @@
       <form id="booking-form">
         <div style="margin-bottom: 20px;">
           <label class="form-label" for="form-name">Full Name</label>
-          <input type="text" id="form-name" name="name" placeholder="John Doe" required>
+          <input type="text" id="form-name" name="name" placeholder="Your Name" required>
         </div>
         
         <div class="form-row" style="margin-bottom: 20px;">
@@ -405,13 +381,18 @@
           <div class="program-selector">
             <label class="program-pill" id="pill-junior">
               <input type="radio" name="program" value="junior" required>
-              Junior Program
+              Little Champs (U11)
             </label>
             <label class="program-pill" id="pill-adult">
               <input type="radio" name="program" value="adult" required>
-              Adult Program
+              Performance players
             </label>
           </div>
+        </div>
+
+        <div id="child-name-container" style="margin-bottom: 20px; display: none;">
+          <label class="form-label" for="form-child-name">Player's / Child's Name</label>
+          <input type="text" id="form-child-name" name="childName" placeholder="Your Name">
         </div>
         
         <div style="margin-bottom: 24px;">
@@ -470,8 +451,8 @@
       <div class="footer-col">
         <h5>Programs</h5>
         <ul>
-          <li><a href="index.html#programs">Adult Camps</a></li>
-          <li><a href="index.html#programs">Junior Programs</a></li>
+          <li><a href="index.html#programs">Performance players</a></li>
+          <li><a href="index.html#programs">Little Champs (U11)</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -502,6 +483,21 @@
   const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/vvpwratxwiuvxphvfenx6by9i9vbgr9y";
 
   document.addEventListener("DOMContentLoaded", () => {
+    const childNameContainer = document.getElementById("child-name-container");
+    const childNameInput = document.getElementById("form-child-name");
+
+    function updateProgramFields() {
+      const selectedProgram = document.querySelector('input[name="program"]:checked')?.value;
+      if (selectedProgram === 'junior') {
+        childNameContainer.style.display = 'block';
+        childNameInput.required = true;
+      } else {
+        childNameContainer.style.display = 'none';
+        childNameInput.required = false;
+        childNameInput.value = '';
+      }
+    }
+
     /* ─── PROGRAM PILL SELECTORS ─── */
     const pills = document.querySelectorAll(".program-pill");
     pills.forEach(pill => {
@@ -516,6 +512,7 @@
         pills.forEach(p => p.classList.remove("selected"));
         pill.classList.add("selected");
         radio.checked = true;
+        updateProgramFields();
       });
     });
 
@@ -529,24 +526,6 @@
       const adultPill = document.querySelector('#pill-adult');
       if (adultPill) adultPill.click();
     }
-
-    /* ─── VIDEO MUTE TOGGLE ─── */
-    const previewVideo = document.getElementById("preview-video");
-    const muteBtn = document.getElementById("mute-btn");
-    const muteIcon = document.getElementById("mute-icon");
-    const unmuteIcon = document.getElementById("unmute-icon");
-
-    muteBtn.addEventListener("click", () => {
-      if (previewVideo.muted) {
-        previewVideo.muted = false;
-        muteIcon.classList.add("hidden");
-        unmuteIcon.classList.remove("hidden");
-      } else {
-        previewVideo.muted = true;
-        muteIcon.classList.remove("hidden");
-        unmuteIcon.classList.add("hidden");
-      }
-    });
 
     /* ─── FORM SUBMISSION AND API WEBHOOK CALL ─── */
     const bookingForm = document.getElementById("booking-form");
@@ -567,20 +546,22 @@
       const email = formData.get("email").trim();
       const phone = formData.get("phone").trim();
       const programValue = formData.get("program");
+      const childName = formData.get("childName")?.trim() || "";
       const details = formData.get("details").trim();
 
-      if (!name || !email || !phone || !programValue) {
+      if (!name || !email || !phone || !programValue || (programValue === 'junior' && !childName)) {
         showError("Please fill out all required fields.");
         resetSubmitBtn();
         return;
       }
 
-      const program = programValue === 'junior' ? 'Junior Program' : 'Adult Program';
+      const program = programValue === 'junior' ? 'Little Champs (U11)' : 'Performance players';
       const payload = {
         name,
         email,
         phone,
         program,
+        childName,
         details,
         submittedAt: new Date().toISOString(),
         submissionTime: new Date().toLocaleString()
@@ -591,6 +572,7 @@
         showSuccess("Test Booking Received! (The Make Webhook URL is currently empty, so the payload was logged to the console).");
         bookingForm.reset();
         pills.forEach(p => p.classList.remove("selected"));
+        updateProgramFields();
         resetSubmitBtn();
         return;
       }
@@ -608,6 +590,7 @@
           showSuccess("Your booking has been received. We will contact you within 24 hours!");
           bookingForm.reset();
           pills.forEach(p => p.classList.remove("selected"));
+          updateProgramFields();
         } else {
           throw new Error(`Server returned status code ${response.status}`);
         }

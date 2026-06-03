@@ -159,11 +159,11 @@ nav.nav-solid {
     gap: 8px;
   }
   .nav-logo-img {
-    height: 160px;
-    margin-top: -60px;
-    margin-bottom: -60px;
-    margin-left: -35px;
-    margin-right: -35px;
+    height: 160px !important;
+    margin-top: -60px !important;
+    margin-bottom: -60px !important;
+    margin-left: -35px !important;
+    margin-right: -35px !important;
   }
   .nav-links { display: none; }
   .hamburger { display: flex; }
@@ -173,13 +173,18 @@ nav.nav-solid {
     position: absolute;
     top: 80px;
     left: 0; right: 0;
-    background: rgba(10, 10, 10, 0.75);
+    background: rgba(13, 27, 46, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     padding: 16px 24px 24px;
     gap: 4px;
     border-top: 1px solid rgba(255,255,255,0.05);
     box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  nav.mobile-nav-open {
+    background: rgba(13, 27, 46, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
   }
 }
 

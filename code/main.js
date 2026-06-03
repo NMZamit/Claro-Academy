@@ -5,10 +5,14 @@
 /* ─── HAMBURGER MENU ─── */
 const hamburger = document.querySelector('.hamburger');
 const navLinks  = document.querySelector('.nav-links');
+const navEl     = document.querySelector('nav');
 
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
   hamburger.classList.toggle('active');
+  if (navEl) {
+    navEl.classList.toggle('mobile-nav-open');
+  }
 });
 
 // Close the menu when any nav link is clicked
@@ -16,6 +20,9 @@ navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('open');
     hamburger.classList.remove('active');
+    if (navEl) {
+      navEl.classList.remove('mobile-nav-open');
+    }
   });
 });
 

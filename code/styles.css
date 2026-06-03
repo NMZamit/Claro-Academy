@@ -39,9 +39,9 @@ h1, h2, h3, h4, h5 {
 
 /* ─── NAV ─── */
 nav {
-  background: rgba(13, 27, 46, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -51,9 +51,9 @@ nav {
 }
 /* Override for inner pages that have no hero video */
 nav.nav-solid {
-  background: rgba(13, 27, 46, 0.75) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--navy) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   position: sticky;
   box-shadow: 0 2px 20px rgba(0,0,0,0.4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -80,9 +80,18 @@ nav.nav-solid {
   text-decoration: none;
 }
 .nav-logo-img {
-  height: 42px;
-  width: auto;
+  height: 280px !important;
+  width: auto !important;
+  max-height: none !important;
+  max-width: none !important;
+  flex-shrink: 0;
   object-fit: contain;
+  margin-top: -182px;
+  margin-bottom: -182px;
+  margin-left: -90px;
+  margin-right: -90px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .nav-logo span { color: var(--primary); }
 .nav-links {
@@ -150,7 +159,11 @@ nav.nav-solid {
     gap: 8px;
   }
   .nav-logo-img {
-    height: 32px;
+    height: 160px;
+    margin-top: -60px;
+    margin-bottom: -60px;
+    margin-left: -35px;
+    margin-right: -35px;
   }
   .nav-links { display: none; }
   .hamburger { display: flex; }

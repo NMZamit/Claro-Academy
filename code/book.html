@@ -309,8 +309,7 @@
 <nav class="nav-solid">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="../assets/logo1.png" alt="Claro Tennis Academy Logo" class="nav-logo-img">
-      Claro Tennis <span>Academy</span>
+      <img src="../assets/logo-transparent.png" alt="Claro Tennis Academy Logo" class="nav-logo-img">
     </a>
     <div class="nav-links">
       <a href="index.html#programs">Programs</a>
@@ -488,9 +487,13 @@
 
     function updateProgramFields() {
       const selectedProgram = document.querySelector('input[name="program"]:checked')?.value;
-      if (selectedProgram === 'junior') {
+      const label = document.querySelector('label[for="form-child-name"]');
+      if (selectedProgram === 'junior' || selectedProgram === 'adult') {
         childNameContainer.style.display = 'block';
         childNameInput.required = true;
+        if (label) {
+          label.innerHTML = "Player's / Child's Name <span style='color: var(--primary);'>*</span>";
+        }
       } else {
         childNameContainer.style.display = 'none';
         childNameInput.required = false;
@@ -549,7 +552,7 @@
       const childName = formData.get("childName")?.trim() || "";
       const details = formData.get("details").trim();
 
-      if (!name || !email || !phone || !programValue || (programValue === 'junior' && !childName)) {
+      if (!name || !email || !phone || !programValue || !childName) {
         showError("Please fill out all required fields.");
         resetSubmitBtn();
         return;
